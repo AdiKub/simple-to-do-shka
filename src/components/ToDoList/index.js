@@ -6,6 +6,15 @@ const ToDoList = () => {
   const list = useSelector( state => state.myList )
   const dispatch = useDispatch();
 
+  const inputStyle = { 
+    height: '100%', 
+    width: '100%' , 
+    padding: '0 0 0 5px', 
+    border: 'none', 
+    backgroundColor: '#DDDDDD'
+  }
+
+
   const addTask = () => {
     dispatch({ type: 'ADD_TASK', title: inputValue })
     document.querySelector('.task__input').value=''
@@ -32,7 +41,7 @@ const ToDoList = () => {
           <input
             className='task__input'
             onChange={(event)=>handleInput(event.target)}
-            style={{ height: '100%', width: '100%' , padding: '0 0 0 5px', border: 'none', backgroundColor: '#DDDDDD' }} 
+            style={inputStyle} 
             placeholder='add task'/> 
           <button 
             onClick={addTask}
