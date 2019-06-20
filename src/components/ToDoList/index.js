@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 
+import './toDoList.scss';
+
 const ToDoList = () => {
   const [ inputValue, onInput ] = useState('');
   const list = useSelector( state => state.myList )
@@ -44,8 +46,8 @@ const ToDoList = () => {
             style={inputStyle} 
             placeholder='add task'/> 
           <button 
-            onClick={addTask}
-            style={{ height: '100%', width: '50px', padding: '0', border: 'none', borderLeft: '1px solid gray' }}> 
+            className='input__button'
+            onClick={addTask}>
             add
           </button>
         </div>  
