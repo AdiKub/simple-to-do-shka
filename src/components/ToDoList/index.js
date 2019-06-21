@@ -11,15 +11,17 @@ const ToDoList = () => {
   const inputStyle = { 
     height: '100%', 
     width: '100%' , 
-    padding: '0 0 0 5px', 
+    padding: '5px', 
     border: 'none', 
+    color: 'gray',
     backgroundColor: '#DDDDDD'
   }
 
 
   const addTask = () => {
-    dispatch({ type: 'ADD_TASK', title: inputValue })
-    document.querySelector('.task__input').value=''
+    inputValue && dispatch({ type: 'ADD_TASK', title: inputValue });
+    onInput('');
+    document.querySelector('.task__input').value = '';
   } 
   const handleInput = (e) => {
     onInput(e.value)
@@ -35,11 +37,16 @@ const ToDoList = () => {
       {list.map((task, index) => 
         <div  
           key={index} 
-          style={{ marginBottom: '5px', display: 'flex', width: '200px', justifyContent: 'space-between'}}>
-          <li style={{ textAlign: 'center' ,listStyle: 'none', width: '100%', backgroundColor: 'gray' }}> {task} </li> 
-          <button  id={index} onClick={(e)=>handleDelete(e.target.id)}> delet </button> 
+          style={{ marginBottom: '5px', display: 'flex',  width: 'auto'}}>
+          <li style={{ padding: '5px' ,listStyle: 'none',  minWidth: '150px', backgroundColor: 'gray', color: '#DDDDDD' }}> {task} </li> 
+          <button 
+            className='task__delete' 
+            id={index} 
+            onClick={(e)=>handleDelete(e.target.id)}> 
+            delet 
+          </button> 
         </div> )}
-        <div style={{display: 'flex' , height: '20px', width: '200px',  }}>
+        <div style={{display: 'flex' , width: '200px',  }}>
           <input
             className='task__input'
             onChange={(event)=>handleInput(event.target)}
@@ -47,7 +54,13 @@ const ToDoList = () => {
             placeholder='add task'/> 
           <button 
             className='input__button'
-            onClick={addTask}>
+            onClick={addTask}
+            onMouseDown ={(e)=> {
+               e.target.style.backgroundColor = '#DDDDDD'
+               e.target.style.color = 'gray' } }
+            onMouseUp ={(e)=> {
+               e.target.style.backgroundColor = 'gray'
+               e.target.style.color = '#DDDDDD' } }>
             add
           </button>
         </div>  

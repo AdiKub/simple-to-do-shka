@@ -1,13 +1,17 @@
 button:focus {outline:0;}
 input:focus {outline:0;}
+button:hover {cursor: pointer;}
 
 .input__button {
-  height: 100%;
-  width: 60px;
-  padding: 0; 
-  border: none; 
-  border-left: 1px solid gray; 
+  width: 50px;
+  padding: 5; 
+  border: 1px solid gray; 
   background-color: gray;
   color: #DDDDDD;
 }
 
+.task__delete {
+  border: 1px solid gray; 
+  background-color: #DDDDDD;
+  color: gray;
+}
