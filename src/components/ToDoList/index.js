@@ -1,13 +1,14 @@
 import React, { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 
+// style variant 1
 import './toDoList.scss';
 
 const ToDoList = () => {
   const [ inputValue, onInput ] = useState('');
   const list = useSelector( state => state.myList )
   const dispatch = useDispatch();
-
+  // style variant 2
   const inputStyle = { 
     height: '100%', 
     width: '100%' , 
@@ -37,6 +38,7 @@ const ToDoList = () => {
       {list.map((task, index) => 
         <div  
           key={index} 
+          // style variant 3
           style={{ marginBottom: '5px', display: 'flex',  width: 'auto'}}>
           <li style={{ padding: '5px' ,listStyle: 'none',  minWidth: '150px', backgroundColor: 'gray', color: '#DDDDDD' }}> {task} </li> 
           <button 
